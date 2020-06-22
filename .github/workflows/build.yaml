@@ -1,0 +1,13 @@
+﻿name: Build Trick App
+on: push
+
+jobs:
+  build:
+    name: Build Trick App
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Current Directory
+        run: pwd
+      - name: List Files in Dir
+        run: ls
+     
