@@ -1,0 +1,11 @@
+[33mcommit 961cdb8d97ddda190614bfccb34bfefa407e004f[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: VitakSharper <v.banard@gmail.com>
+Date:   Mon Jun 22 20:50:04 2020 +0200
+
+    build yaml, git Actions
+
+[33mcommit 2ed8772bd486e5abc14503524ea5add5ba7ee86e[m[33m ([m[1;31morigin/master[m[33m)[m
+Author: VitakSharper <v.banard@gmail.com>
+Date:   Mon Jun 22 20:22:22 2020 +0200
+
+    init
