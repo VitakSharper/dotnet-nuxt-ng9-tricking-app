@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {TrickingService} from './_services/tricking.service';
 import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -15,5 +16,11 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.message = this.trickingService.getHomeApi();
+  }
+
+  reset() {
+    this.message = this.message.pipe(
+      map(data => 'Init')
+    );
   }
 }

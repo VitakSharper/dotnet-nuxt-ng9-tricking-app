@@ -15,6 +15,8 @@ namespace TrickingLibrary.Api
     {
         public void ConfigureServices(IServiceCollection services)
         {
+            // test as a singleton
+            services.AddSingleton<TrickyStore>();
             services.AddControllers();
             // add from extensions;
             services.AddCorsServices();
@@ -26,6 +28,7 @@ namespace TrickingLibrary.Api
             {
                 app.UseDeveloperExceptionPage();
             }
+
             // add from extensions;
             app.UseCorsMiddleware();
 
