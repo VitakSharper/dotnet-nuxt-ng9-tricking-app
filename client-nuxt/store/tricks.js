@@ -17,7 +17,6 @@ export const mutations = {
 export const actions = {
   fetchTricks: async ({commit}) => {
     const tricks = (await Axios.get('http://localhost:5000/api/tricks')).data;
-    console.log('in trick state: ', tricks)
     commit('setTricks', tricks);
   },
   createTricks: async ({commit, dispatch}, {trick}) => {

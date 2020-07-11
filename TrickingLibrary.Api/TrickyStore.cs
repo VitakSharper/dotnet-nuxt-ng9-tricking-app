@@ -7,14 +7,10 @@ namespace TrickingLibrary.Api
     {
         private readonly List<Trick> _tricks;
 
-        public TrickyStore()
-        {
-            _tricks = new List<Trick>();
-        }
+        public TrickyStore() => _tricks = new List<Trick>();
 
         public IEnumerable<Trick> All => _tricks;
 
-        public void Add(Trick trick)=>
-            _tricks.Add(trick);
+        public void Add(Trick trick) => _tricks.Add(trick);
     }
 }
