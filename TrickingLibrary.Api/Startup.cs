@@ -5,9 +5,11 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using TrickingLibrary.Api.Extensions;
+using TrickingLibrary.Data;
 
 namespace TrickingLibrary.Api
 {
@@ -15,9 +17,8 @@ namespace TrickingLibrary.Api
     {
         public void ConfigureServices(IServiceCollection services)
         {
-            // test as a singleton
-            services.AddSingleton<TrickyStore>();
             services.AddControllers();
+            services.AddDbContext<AppDbContext>(opt => opt.UseInMemoryDatabase("Dev"));
             // add from extensions;
             services.AddCorsServices();
         }

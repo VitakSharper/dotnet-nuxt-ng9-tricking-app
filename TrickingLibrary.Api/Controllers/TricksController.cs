@@ -1,31 +1,49 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using TrickingLibrary.Api.Models;
+using TrickingLibrary.Data;
+using TrickingLibrary.Models;
 
 namespace TrickingLibrary.Api.Controllers
 {
     public class TricksController : BaseController
     {
-        private readonly TrickyStore _trickyStore;
+        private readonly AppDbContext _context;
 
-        public TricksController(TrickyStore trickyStore)
+        public TricksController(AppDbContext context)
         {
-            _trickyStore = trickyStore;
+            _context = context;
         }
 
         [HttpGet]
-        public IActionResult All() => Ok(_trickyStore.All);
+        public IEnumerable<Trick> All() => _context.Tricks.ToList();
 
         [HttpGet("{id}")]
-        public IActionResult Get(string id) => Ok(_trickyStore.All.FirstOrDefault(t => t.Id.Equals(id)));
+        public Trick Get(string id)
+        {
+            if (string.IsNullOrEmpty(id)) throw new ArgumentNullException();
+            return _context.Tricks.FirstOrDefault(t =>
+                t.Id.Equals(id, StringComparison.OrdinalIgnoreCase));
+        }
+
+        [HttpGet("{trickId}/submissions")]
+        public IEnumerable<Submission> ListSubmissionsForTrick(string trickId)
+        {
+            if (string.IsNullOrEmpty(trickId)) throw new ArgumentNullException();
+            return _context.Submissions.Where(s =>
+                s.Id.Equals(trickId, StringComparison.OrdinalIgnoreCase)).ToList();
+        }
 
         [HttpPost]
-        public IActionResult Create([FromBody] Trick trick)
+        public async Task<Trick> Create([FromBody] Trick trick)
         {
-            if (trick == null) return BadRequest();
-            if (string.IsNullOrEmpty(trick.Name)) return NotFound();
-            _trickyStore.Add(trick);
-            return Ok();
+            _ = trick ?? throw new ArgumentNullException();
+
+            _context.Add(trick);
+            await _context.SaveChangesAsync();
+            return trick;
         }
 
         [HttpPut]
@@ -35,8 +53,15 @@ namespace TrickingLibrary.Api.Controllers
         }
 
         [HttpDelete("{id}")]
-        public IActionResult Delete([FromBody] string id)
+        public async Task<IActionResult> Delete([FromBody] string id)
         {
+            var trick = _context.Tricks.FirstOrDefault(t =>
+                t.Id.Equals(id, StringComparison.OrdinalIgnoreCase));
+
+            if (trick == null) return BadRequest();
+
+            trick.IsDeleted = true;
+            await _context.SaveChangesAsync();
             return NoContent();
         }
     }

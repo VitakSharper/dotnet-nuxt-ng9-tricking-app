@@ -12,5 +12,6 @@ export const actions = {
   // mode: 'universal' in nuxt.config.js
   nuxtServerInit: async ({commit, dispatch}) => {
     dispatch('tricks/fetchTricks')
+    dispatch('submissions/fetchSubmissions')
   }
 }

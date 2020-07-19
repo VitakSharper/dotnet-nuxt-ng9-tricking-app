@@ -2,6 +2,10 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrickingLibrary.Api", "TrickingLibrary.Api\TrickingLibrary.Api.csproj", "{39DDC0CD-3D87-4CB6-AD48-F530B36D1D62}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrickingLibrary.Models", "TrickingLibrary.Models\TrickingLibrary.Models.csproj", "{DE235156-DD48-410A-8BB1-E3D37840897C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrickingLibrary.Data", "TrickingLibrary.Data\TrickingLibrary.Data.csproj", "{8C3D013A-25E9-4DD0-9E19-C21930FA80BA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +16,13 @@ Global
 		{39DDC0CD-3D87-4CB6-AD48-F530B36D1D62}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{39DDC0CD-3D87-4CB6-AD48-F530B36D1D62}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{39DDC0CD-3D87-4CB6-AD48-F530B36D1D62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE235156-DD48-410A-8BB1-E3D37840897C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE235156-DD48-410A-8BB1-E3D37840897C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE235156-DD48-410A-8BB1-E3D37840897C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE235156-DD48-410A-8BB1-E3D37840897C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C3D013A-25E9-4DD0-9E19-C21930FA80BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C3D013A-25E9-4DD0-9E19-C21930FA80BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C3D013A-25E9-4DD0-9E19-C21930FA80BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C3D013A-25E9-4DD0-9E19-C21930FA80BA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
