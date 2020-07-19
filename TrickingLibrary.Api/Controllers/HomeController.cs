@@ -2,7 +2,7 @@
 
 namespace TrickingLibrary.Api.Controllers
 {
-    public class HomeController : Base
+    public class HomeController : BaseController
     {
         [HttpGet("index")]
         public ActionResult Index() =>

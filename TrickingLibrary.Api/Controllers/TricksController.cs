@@ -4,7 +4,7 @@ using TrickingLibrary.Api.Models;
 
 namespace TrickingLibrary.Api.Controllers
 {
-    public class TricksController : Base
+    public class TricksController : BaseController
     {
         private readonly TrickyStore _trickyStore;
 
