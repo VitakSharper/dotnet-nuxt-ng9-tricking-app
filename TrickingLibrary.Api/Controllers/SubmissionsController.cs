@@ -21,15 +21,15 @@ namespace TrickingLibrary.Api.Controllers
         public IEnumerable<Submission> All() => _context.Submissions.ToList();
 
         [HttpGet("{id}")]
-        public Trick Get(string id)
+        public Submission Get(string id)
         {
             if (string.IsNullOrEmpty(id)) throw new ArgumentNullException();
-            return _context.Tricks.FirstOrDefault(t =>
+            return _context.Submissions.FirstOrDefault(t =>
                 t.Id.Equals(id, StringComparison.OrdinalIgnoreCase));
         }
 
         [HttpPost]
-        public async Task<Trick> Create([FromBody] Trick submission)
+        public async Task<Submission> Create([FromBody] Submission submission)
         {
             _ = submission ?? throw new ArgumentNullException();
 
@@ -39,7 +39,7 @@ namespace TrickingLibrary.Api.Controllers
         }
 
         [HttpPut]
-        public IActionResult Update([FromBody] Trick submission)
+        public IActionResult Update([FromBody] Submission submission)
         {
             return Ok();
         }
@@ -47,7 +47,7 @@ namespace TrickingLibrary.Api.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete([FromBody] string id)
         {
-            var submission = _context.Tricks.FirstOrDefault(t =>
+            var submission = _context.Submissions.FirstOrDefault(t =>
                 t.Id.Equals(id, StringComparison.OrdinalIgnoreCase));
 
             if (submission == null) return BadRequest();

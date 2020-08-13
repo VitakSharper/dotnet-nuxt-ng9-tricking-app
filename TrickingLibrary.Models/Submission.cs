@@ -1,6 +1,6 @@
 ﻿namespace TrickingLibrary.Models
 {
-    public class Submission : BaseModel
+    public class Submission : BaseModel<string>
     {
         public string TrickId { get; set; }
         public string Video { get; set; }

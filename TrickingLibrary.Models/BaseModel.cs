@@ -2,9 +2,9 @@
 
 namespace TrickingLibrary.Models
 {
-    public abstract class BaseModel
+    public abstract class BaseModel<TKey>
     {
-        public string Id { get; set; } = Guid.NewGuid().ToString();
+        public TKey Id { get; set; }
         public bool IsDeleted { get; set; }
     }
 }

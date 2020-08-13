@@ -25,15 +25,16 @@ namespace TrickingLibrary.Api.Controllers
         {
             if (string.IsNullOrEmpty(id)) throw new ArgumentNullException();
             return _context.Tricks.FirstOrDefault(t =>
-                t.Id.Equals(id, StringComparison.OrdinalIgnoreCase));
+                t.Id.Equals(id, StringComparison.InvariantCultureIgnoreCase));
         }
 
         [HttpGet("{trickId}/submissions")]
         public IEnumerable<Submission> ListSubmissionsForTrick(string trickId)
         {
             if (string.IsNullOrEmpty(trickId)) throw new ArgumentNullException();
+            
             return _context.Submissions.Where(s =>
-                s.Id.Equals(trickId, StringComparison.OrdinalIgnoreCase)).ToList();
+                s.Id.Equals(trickId, StringComparison.InvariantCultureIgnoreCase)).ToList();
         }
 
         [HttpPost]
@@ -41,15 +42,19 @@ namespace TrickingLibrary.Api.Controllers
         {
             _ = trick ?? throw new ArgumentNullException();
 
+            trick.Id = trick.Name.Replace(" ", "-").ToLowerInvariant();
             _context.Add(trick);
             await _context.SaveChangesAsync();
             return trick;
         }
 
         [HttpPut]
-        public IActionResult Update([FromBody] Trick trick)
+        public async Task<Trick> Update([FromBody] Trick trick)
         {
-            return Ok();
+            if (string.IsNullOrEmpty(trick.Id)) return null;
+            _context.Add(trick);
+            await _context.SaveChangesAsync();
+            return trick;
         }
 
         [HttpDelete("{id}")]

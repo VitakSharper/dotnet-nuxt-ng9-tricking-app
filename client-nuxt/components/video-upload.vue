@@ -79,7 +79,7 @@
     }),
     computed: {
       ...mapState('video-upload', ['uploadPromise', 'active', 'step', 'type']),
-      uploadType: () => {
+      uploadType() {
         return UPLOAD_TYPE
       }
     },

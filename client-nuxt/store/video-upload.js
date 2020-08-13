@@ -7,7 +7,6 @@ const initState = () => ({
   step: 1
 })
 
-
 export const state = initState;
 
 export const mutations = {
@@ -42,18 +41,4 @@ export const actions = {
     const uploadPromise = await this.$axios.$post(`http://localhost:5000/api/videos`, form)
     commit('setTask', {uploadPromise})
   },
-  async createTrick({state, commit, dispatch}, {trick, submission}) {
-    if (state.type === UPLOAD_TYPE.TRICK) {
-      const createdTrick = await this.$axios.$post(`http://localhost:5000/api/tricks`, trick);
-      submission = {...submission, trickId: createdTrick.id}
-    }
-    const createdSubmission = await this.$axios.$post(`http://localhost:5000/api/submissions`, submission);
-
-  }
 };
-
-export const getters = {
-  // getUsers: s => s.users
-};
-
-

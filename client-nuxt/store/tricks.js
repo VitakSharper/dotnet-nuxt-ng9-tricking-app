@@ -2,7 +2,6 @@ export const state = () => ({
   tricks: []
 });
 
-
 export const mutations = {
   setTricks(state, tricks) {
     state.tricks = tricks
@@ -17,14 +16,7 @@ export const actions = {
     const tricks = await this.$axios.$get(`http://localhost:5000/api/tricks`);
     commit('setTricks', tricks);
   },
-  async createTricks({commit, dispatch}, {trick}) {
-    await this.$axios.$post(`http://localhost:5000/api/tricks`, trick);
-    await dispatch('fetchTricks');
+  createTrick({state, commit, dispatch}, {form}) {
+    return this.$axios.$post(`http://localhost:5000/api/tricks`, form);
   }
 };
-
-export const getters = {
-  // getUsers: s => s.users
-};
-
-
